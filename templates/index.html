@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Classificador de Relevância de Cavidades</title>
+<link rel="stylesheet" href="../static/css/style.css">
+<script src="../static/js/app.js" defer ></script>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Classificador de Relevância de Cavidades</h1>
+        <p>Predição de potencial de relevância máxima</p>
+    </header>
+
+    <div class="tabs">
+
+        <button class="tab active"
+            onclick="abrirAba('individual')">
+            Avaliação Individual
+        </button>
+
+        <button class="tab"
+            onclick="abrirAba('planilha')">
+            Processar Planilha
+        </button>
+
+    </div>
+
+    <!-- ABA INDIVIDUAL -->
+
+    <div id="individual" class="content active">
+
+    <div class="card">
+
+    <h2>Dados Básicos</h2>
+
+    <div class="field">
+        <label>Nome da Entrada</label>
+        <input type="number" id="nome_entrada">
+    </div>
+
+    <div class="field">
+        <label>Desenvolvimento Aproximado</label>
+        <input type="number" id="desenv_aproximado" step="0.01">
+    </div>
+
+    <div class="field">
+        <label>Desnível da Prospecção</label>
+        <input type="number" id="desnivel_propeccao" step="0.01">
+    </div>
+
+    <h2>Características Gerais</h2>
+
+    <div class="checkbox-grid">
+
+        <label><input type="checkbox" id="zona_afotica"> Zona Afótica</label>
+
+        <label><input type="checkbox" id="raizes"> Raízes</label>
+
+        <label><input type="checkbox" id="ocorrencia_guano_concentrado"> Guano Concentrado</label>
+
+        <label><input type="checkbox" id="ocorrencia_guano_disperso"> Guano Disperso</label>
+
+    </div>
+
+    <h2>Fauna Observada</h2>
+
+    <div class="checkbox-grid">
+
+        <label><input type="checkbox" id="animal_observado_anfibios"> Anfíbios</label>
+
+        <label><input type="checkbox" id="animal_observado_aves"> Aves</label>
+
+        <label><input type="checkbox" id="animal_observado_invertebrados"> Invertebrados</label>
+
+        <label><input type="checkbox" id="animal_observado_mamiferos"> Mamíferos</label>
+
+        <label><input type="checkbox" id="animal_observado_morcegos"> Morcegos</label>
+
+        <label><input type="checkbox" id="animal_observado_ninhos"> Ninhos</label>
+
+        <label><input type="checkbox" id="animal_observado_peixes"> Peixes</label>
+
+        <label><input type="checkbox" id="animal_observado_repteis"> Répteis</label>
+
+    </div>
+
+    <h2>Espeleotemas</h2>
+
+    <div class="checkbox-grid">
+
+        <label><input type="checkbox" id="tipo_espeleotema_coraloides"> Coraloides</label>
+
+        <label><input type="checkbox" id="tipo_espeleotema_crosta"> Crosta</label>
+
+        <label><input type="checkbox" id="tipo_espeleotema_escorrimentos"> Escorrimentos</label>
+
+        <label><input type="checkbox" id="tipo_espeleotema_estalactites"> Estalactites</label>
+
+        <label><input type="checkbox" id="tipo_espeleotema_estalagmites"> Estalagmites</label>
+
+        <label><input type="checkbox" id="tipo_espeleotema_pingente"> Pingente</label>
+
+        <label><input type="checkbox" id="tipo_espeleotema_travertinos"> Travertinos</label>
+
+    </div>
+
+    <h2>Feições Hidrológicas</h2>
+
+    <div class="checkbox-grid">
+
+        <label><input type="checkbox" id="feicao_hidrologica_cachoeira"> Cachoeira</label>
+
+        <label><input type="checkbox" id="feicao_hidrologica_condensacao"> Condensação</label>
+
+        <label><input type="checkbox" id="feicao_hidrologica_drenagem"> Drenagem</label>
+
+        <label><input type="checkbox" id="feicao_hidrologica_gotejamento"> Gotejamento</label>
+
+        <label><input type="checkbox" id="feicao_hidrologica_lago"> Lago</label>
+
+        <label><input type="checkbox" id="feicao_hidrologica_percolacao"> Percolação</label>
+
+    </div>
+
+    <h2>Dificuldades Internas</h2>
+
+    <div class="checkbox-grid">
+
+        <label><input type="checkbox" id="dificuldade_interna_blocos_instaveis"> Blocos Instáveis</label>
+
+        <label><input type="checkbox" id="dificuldade_interna_lances_verticais"> Lances Verticais</label>
+
+        <label><input type="checkbox" id="dificuldade_interna_quebra_corpo"> Quebra Corpo</label>
+
+        <label><input type="checkbox" id="dificuldade_interna_rastejamento"> Rastejamento</label>
+
+        <label><input type="checkbox" id="dificuldade_interna_teto_baixo"> Teto Baixo</label>
+
+    </div>
+
+    <h2>Feições Internas</h2>
+
+    <div class="checkbox-grid">
+
+        <label><input type="checkbox" id="feicao_interna_blocos_abatidos"> Blocos Abatidos</label>
+
+        <label><input type="checkbox" id="feicao_interna_canaliculos"> Canalículos</label>
+
+        <label><input type="checkbox" id="feicao_interna_claraboias"> Claraboias</label>
+
+        <label><input type="checkbox" id="feicao_interna_conduto"> Conduto</label>
+
+    </div>
+
+    <h2>Arqueologia / Paleontologia</h2>
+
+    <div class="checkbox-grid">
+
+        <label><input type="checkbox" id="arqueologia_paleontologia_ceramico"> Cerâmico</label>
+
+        <label><input type="checkbox" id="arqueologia_paleontologia_litico"> Lítico</label>
+
+        <label><input type="checkbox" id="arqueologia_paleontologia_ossada"> Ossada</label>
+
+        <label><input type="checkbox" id="arqueologia_paleontologia_vestigio_historico"> Vestígio Histórico</label>
+
+    </div>
+
+    <h2>Litotipo</h2>
+
+    <div class="checkbox-grid">
+
+        <label><input type="checkbox" id="litotipo_prospeccao_granito_gnaisse"> Granito/Gnaisse</label>
+
+        <label><input type="checkbox" id="litotipo_prospeccao_rochas_carbonaticas"> Rochas Carbonáticas</label>
+
+        <label><input type="checkbox" id="litotipo_prospeccao_rochas_ferriferas"> Rochas Ferríferas</label>
+
+        <label><input type="checkbox" id="litotipo_prospeccao_rochas_peliticas"> Rochas Pelíticas</label>
+
+        <label><input type="checkbox" id="litotipo_prospeccao_rochas_siliciosas"> Rochas Siliciosas</label>
+
+    </div>
+
+    <h2>Tipo de Cavidade</h2>
+
+    <div class="checkbox-grid">
+
+        <label><input type="checkbox" id="tipo_cavidade__abrigo"> Abrigo</label>
+
+        <label><input type="checkbox" id="tipo_cavidade__cavidade"> Cavidade</label>
+
+        <label><input type="checkbox" id="tipo_cavidade__feicao_espeleologica"> Feição Espeleológica</label>
+
+    </div>
+
+    <button
+        class="btn"
+        onclick="avaliarIndividual()">
+        Avaliar Cavidade
+    </button>
+
+</div>
+
+        <div id="resultado" class="resultado">
+
+            <h2>Resultado</h2>
+
+            <div id="score" class="score">
+                0%
+            </div>
+
+            <div id="classe" class="classe">
+                --
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="planilha" class="content">
+
+        <div class="card">
+
+            <h2>Processamento em Lote</h2>
+
+            <button class="btn">
+
+                📥 Baixar Template Excel
+            </button>
+
+            </div>
+
+            <br>
+
+            <input type="file"
+                accept=".xlsx">
+
+            <br><br>
+
+            <button
+                class="btn"
+                onclick="processarPlanilha()">
+
+                Processar Planilha
+
+            </button>
+
+        </div>
+
+        <div id="planilhaResultado"
+             class="resultado">
+
+            <h2>Processamento Concluído</h2>
+
+            <button class="btn">
+
+                📊 Baixar Resultado
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
