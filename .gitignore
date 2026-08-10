@@ -77,7 +77,7 @@ htmlcov/
 *.pkl
 *.joblib
 *.sav
-*.xlsx
+
 
 # Dados
 data/
@@ -87,7 +87,7 @@ sas_model/
 # Arquivos grandes
 *.csv
 *.parquet
-
+*.xlsx
 # ========================================
 # SAS Viya
 # ========================================
