@@ -77,10 +77,12 @@ htmlcov/
 *.pkl
 *.joblib
 *.sav
+*.xlsx
 
 # Dados
 data/
 datasets/
+sas_model/
 
 # Arquivos grandes
 *.csv

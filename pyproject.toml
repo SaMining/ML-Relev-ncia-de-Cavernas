@@ -1,12 +1,23 @@
 [project]
-name = "espeleo-ml"
+name = "ml-relev-ncia-de-cavernas"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.9"
 dependencies = [
-    "fastapi>=0.141.1",
-    "pandas>=3.0.5",
-    "scikit-learn>=1.9.0",
-    "uvicorn>=0.52.1",
+    "ipykernel>=6.31.0",
+    "matplotlib==3.7.5",
+    "openpyxl>=3.1.5",
+    "pandas==2.1.4",
+    "plotly==5.22.0",
+    "sasctl>=1.11.8",
+    "scikit-learn==1.4.2",
+    "seaborn==0.13.2",
 ]
+
+[project.scripts]
+ml-relev-ncia-de-cavernas = "ml_relev_ncia_de_cavernas:main"
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"
