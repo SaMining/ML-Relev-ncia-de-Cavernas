@@ -128,7 +128,55 @@ async function avaliarIndividual() {
     }
 }
 
-function processarPlanilha(){
+async function processarPlanilha(){
+    const arquivo = document.getElementById("arquivoExcel").files[0];
+    
+    document
+        .getElementById("planilhaResultado")
+        .style.display = "none"
+
+    if(!arquivo){
+        alert("Selecione uma planilha!")
+        return
+    }
+
+    const formData = new FormData()
+
+    formData.append(
+        "file",
+        arquivo
+    )
+
+    const response = await fetch(
+        "/predict-batch",
+        {
+            method: "POST",
+            body: formData
+        }
+    )
+
+    const blob = await response.blob();
+
+    const url =
+    window.URL.createObjectURL(blob);
+    
+    const btn =
+    document.getElementById(
+        "btnDownloadResultado"
+    );
+
+    btn.onclick = () => { 
+        const a =
+            document.createElement("a");
+
+        a.href = url;
+        a.download =
+            "resultado.xlsx";
+
+        a.click();
+    };
+
+    console.log(response)
 
     document
         .getElementById("planilhaResultado")

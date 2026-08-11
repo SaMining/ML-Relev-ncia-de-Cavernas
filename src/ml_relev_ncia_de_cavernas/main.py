@@ -1,15 +1,18 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from api.routes import router
+from ml_relev_ncia_de_cavernas.api.routes import router
+from pathlib import Path
 import joblib
 
-app = FastAPI()
+BASE_DIR = Path(__file__).parent
 
-app.state.model = joblib.load("./artifacts/random_forest_v3.pkl")
+app = FastAPI()
+print(BASE_DIR)
+app.state.model = joblib.load(BASE_DIR / "artifacts/random_forest_v3.pkl")
 
 app.mount(
     "/static",
-    StaticFiles(directory="static"),
+    StaticFiles(directory=str(BASE_DIR / "static")),
     name="static"
 )
 

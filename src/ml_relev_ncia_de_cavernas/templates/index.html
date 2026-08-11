@@ -229,18 +229,23 @@
         <div class="card">
 
             <h2>Processamento em Lote</h2>
+            <a href= "../static/files/template.xlsx">
 
-            <button class="btn">
+             <button class="btn">
 
                 📥 Baixar Template Excel
             </button>
+            </a>
+     
 
             </div>
 
             <br>
 
             <input type="file"
-                accept=".xlsx">
+                accept=".xlsx"
+                id="arquivoExcel"
+                >
 
             <br><br>
 
@@ -259,7 +264,8 @@
 
             <h2>Processamento Concluído</h2>
 
-            <button class="btn">
+            <button class="btn"
+            id="btnDownloadResultado">
 
                 📊 Baixar Resultado
 
