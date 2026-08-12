@@ -9,6 +9,10 @@ function abrirAba(nome){
         .forEach(btn => btn.classList.remove("active"))
 
     document
+        .getElementById("planilhaResultado")
+        .style.display = "none"
+
+    document
         .getElementById(nome)
         .classList.add("active")
 
@@ -135,6 +139,58 @@ async function processarPlanilha(){
         .getElementById("planilhaResultado")
         .style.display = "none"
 
+    if(!arquivo){
+        alert("Selecione uma planilha!")
+        return
+    }
+
+    const formData = new FormData()
+
+    formData.append(
+        "file",
+        arquivo
+    )
+
+    const response = await fetch(
+        "/predict-batch",
+        {
+            method: "POST",
+            body: formData
+        }
+    )
+
+    const blob = await response.blob();
+
+    const url =
+    window.URL.createObjectURL(blob);
+    
+    const btn =
+    document.getElementById(
+        "btnDownloadResultado"
+    );
+
+    btn.onclick = () => { 
+        const a =
+            document.createElement("a");
+
+        a.href = url;
+        a.download =
+            "resultado.xlsx";
+
+        a.click();
+    };
+
+    console.log(response)
+
+    document
+        .getElementById("planilhaResultado")
+        .style.display = "block"
+
+}
+
+async function processarTreinamento(){
+    const arquivo = document.getElementById("arquivoTreinamento").files[0];
+    
     if(!arquivo){
         alert("Selecione uma planilha!")
         return
