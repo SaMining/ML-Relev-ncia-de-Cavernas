@@ -1,0 +1,197 @@
+XGBOOST
+
+XGBOOST - Dataset df_treino_quadrilatero_v4
+Threshold: 0.5
+              precision    recall  f1-score   support
+
+           0       0.84      0.92      0.88       199
+           1       0.57      0.36      0.44        55
+
+    accuracy                           0.80       254
+   macro avg       0.71      0.64      0.66       254
+weighted avg       0.78      0.80      0.79       254
+
+----------------------------------------------------------
+
+XGBOOST - Dataset df_treino_quadrilatero_v4
+Threshold: 0.45
+              precision    recall  f1-score   support
+
+           0       0.84      0.91      0.87       199
+           1       0.54      0.38      0.45        55
+
+    accuracy                           0.80       254
+   macro avg       0.69      0.65      0.66       254
+weighted avg       0.78      0.80      0.78       254
+
+----------------------------------------------------------
+
+XGBOOST - Dataset df_treino_quadrilatero_v4
+Threshold: 0.4
+              precision    recall  f1-score   support
+
+           0       0.86      0.89      0.87       199
+           1       0.53      0.45      0.49        55
+
+    accuracy                           0.80       254
+   macro avg       0.69      0.67      0.68       254
+weighted avg       0.79      0.80      0.79       254
+
+----------------------------------------------------------
+
+XGBOOST - Dataset df_treino_quadrilatero_v4
+Threshold: 0.35
+              precision    recall  f1-score   support
+
+           0       0.86      0.87      0.87       199
+           1       0.52      0.51      0.51        55
+
+    accuracy                           0.79       254
+   macro avg       0.69      0.69      0.69       254
+weighted avg       0.79      0.79      0.79       254
+
+----------------------------------------------------------
+
+XGBOOST - Dataset df_treino_quadrilatero_v4
+Threshold: 0.3
+              precision    recall  f1-score   support
+
+           0       0.87      0.86      0.87       199
+           1       0.52      0.53      0.52        55
+
+    accuracy                           0.79       254
+   macro avg       0.69      0.70      0.69       254
+weighted avg       0.79      0.79      0.79       254
+
+================================================================================
+Decision Tree
+
+Decision Tree - Dataset df_treino_quadrilatero_v4
+Threshold: 0.5
+              precision    recall  f1-score   support
+
+           0       0.83      0.84      0.84       199
+           1       0.41      0.40      0.40        55
+
+    accuracy                           0.74       254
+   macro avg       0.62      0.62      0.62       254
+weighted avg       0.74      0.74      0.74       254
+
+----------------------------------------------------------
+
+Decision Tree - Dataset df_treino_quadrilatero_v4
+Threshold: 0.45
+              precision    recall  f1-score   support
+
+           0       0.83      0.84      0.84       199
+           1       0.41      0.40      0.40        55
+
+    accuracy                           0.74       254
+   macro avg       0.62      0.62      0.62       254
+weighted avg       0.74      0.74      0.74       254
+
+----------------------------------------------------------
+
+Decision Tree - Dataset df_treino_quadrilatero_v4
+Threshold: 0.4
+              precision    recall  f1-score   support
+
+           0       0.83      0.84      0.84       199
+           1       0.41      0.40      0.40        55
+
+    accuracy                           0.74       254
+   macro avg       0.62      0.62      0.62       254
+weighted avg       0.74      0.74      0.74       254
+
+----------------------------------------------------------
+
+Decision Tree - Dataset df_treino_quadrilatero_v4
+Threshold: 0.35
+              precision    recall  f1-score   support
+
+           0       0.83      0.84      0.84       199
+           1       0.41      0.40      0.40        55
+
+    accuracy                           0.74       254
+   macro avg       0.62      0.62      0.62       254
+weighted avg       0.74      0.74      0.74       254
+
+----------------------------------------------------------
+
+Decision Tree - Dataset df_treino_quadrilatero_v4
+Threshold: 0.3
+              precision    recall  f1-score   support
+
+           0       0.83      0.84      0.84       199
+           1       0.41      0.40      0.40        55
+
+    accuracy                           0.74       254
+   macro avg       0.62      0.62      0.62       254
+weighted avg       0.74      0.74      0.74       254
+
+================================================================================
+Random Forest
+
+Random Forest - Dataset df_treino_quadrilatero_v4
+Threshold: 0.5
+              precision    recall  f1-score   support
+
+           0       0.83      0.96      0.89       199
+           1       0.68      0.27      0.39        55
+
+    accuracy                           0.81       254
+   macro avg       0.75      0.62      0.64       254
+weighted avg       0.80      0.81      0.78       254
+
+----------------------------------------------------------
+
+Random Forest - Dataset df_treino_quadrilatero_v4
+Threshold: 0.45
+              precision    recall  f1-score   support
+
+           0       0.83      0.96      0.89       199
+           1       0.67      0.29      0.41        55
+
+    accuracy                           0.81       254
+   macro avg       0.75      0.63      0.65       254
+weighted avg       0.79      0.81      0.79       254
+
+----------------------------------------------------------
+
+Random Forest - Dataset df_treino_quadrilatero_v4
+Threshold: 0.4
+              precision    recall  f1-score   support
+
+           0       0.84      0.93      0.88       199
+           1       0.59      0.35      0.44        55
+
+    accuracy                           0.81       254
+   macro avg       0.72      0.64      0.66       254
+weighted avg       0.78      0.81      0.79       254
+
+----------------------------------------------------------
+
+Random Forest - Dataset df_treino_quadrilatero_v4
+Threshold: 0.35
+              precision    recall  f1-score   support
+
+           0       0.86      0.88      0.87       199
+           1       0.52      0.47      0.50        55
+
+    accuracy                           0.79       254
+   macro avg       0.69      0.68      0.68       254
+weighted avg       0.78      0.79      0.79       254
+
+----------------------------------------------------------
+
+Random Forest - Dataset df_treino_quadrilatero_v4
+Threshold: 0.3
+              precision    recall  f1-score   support
+
+           0       0.86      0.83      0.85       199
+           1       0.47      0.53      0.50        55
+
+    accuracy                           0.77       254
+   macro avg       0.67      0.68      0.67       254
+weighted avg       0.78      0.77      0.77       254
+
