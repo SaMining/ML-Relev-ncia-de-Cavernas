@@ -1,0 +1,538 @@
+================================================================================
+INFORMAÇÕES DO DATASET
+================================================================================
+Dataset: df_treino_carajas_v3
+Total de registros antes do split: 2707
+Total de variáveis preditoras: 47
+Tamanho de X completo: (2707, 47)
+Tamanho de y completo: (2707,)
+Registros de treinamento: 2165
+Registros de teste: 542
+Percentual efetivo de treinamento: 79.98%
+Percentual efetivo de teste: 20.02%
+
+Distribuição completa do target:
+target
+0    2090
+1     617
+
+Distribuição percentual completa:
+target
+0    77.21
+1    22.79
+
+Distribuição do target no treino:
+target
+0    1672
+1     493
+
+Distribuição do target no teste:
+target
+0    418
+1    124
+
+================================================================================
+XGBOOST
+================================================================================
+ROC-AUC: 0.8597
+Average Precision: 0.6932
+
+XGBoost - Dataset df_treino_carajas_v3
+Threshold: 0.50
+
+Matriz de confusão bruta:
+[[394  24]
+ [ 66  58]]
+Verdadeiros negativos (TN): 394
+Falsos positivos (FP): 24
+Falsos negativos (FN): 66
+Verdadeiros positivos (TP): 58
+Acurácia calculada: 0.8339
+Precisão da classe positiva: 0.7073
+Recall da classe positiva: 0.4677
+Especificidade da classe negativa: 0.9426
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8565    0.9426    0.8975       418
+           1     0.7073    0.4677    0.5631       124
+
+    accuracy                         0.8339       542
+   macro avg     0.7819    0.7052    0.7303       542
+weighted avg     0.8224    0.8339    0.8210       542
+
+--------------------------------------------------------------------------------
+
+XGBoost - Dataset df_treino_carajas_v3
+Threshold: 0.45
+
+Matriz de confusão bruta:
+[[388  30]
+ [ 60  64]]
+Verdadeiros negativos (TN): 388
+Falsos positivos (FP): 30
+Falsos negativos (FN): 60
+Verdadeiros positivos (TP): 64
+Acurácia calculada: 0.8339
+Precisão da classe positiva: 0.6809
+Recall da classe positiva: 0.5161
+Especificidade da classe negativa: 0.9282
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8661    0.9282    0.8961       418
+           1     0.6809    0.5161    0.5872       124
+
+    accuracy                         0.8339       542
+   macro avg     0.7735    0.7222    0.7416       542
+weighted avg     0.8237    0.8339    0.8254       542
+
+--------------------------------------------------------------------------------
+
+XGBoost - Dataset df_treino_carajas_v3
+Threshold: 0.40
+
+Matriz de confusão bruta:
+[[379  39]
+ [ 52  72]]
+Verdadeiros negativos (TN): 379
+Falsos positivos (FP): 39
+Falsos negativos (FN): 52
+Verdadeiros positivos (TP): 72
+Acurácia calculada: 0.8321
+Precisão da classe positiva: 0.6486
+Recall da classe positiva: 0.5806
+Especificidade da classe negativa: 0.9067
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8794    0.9067    0.8928       418
+           1     0.6486    0.5806    0.6128       124
+
+    accuracy                         0.8321       542
+   macro avg     0.7640    0.7437    0.7528       542
+weighted avg     0.8266    0.8321    0.8287       542
+
+--------------------------------------------------------------------------------
+
+XGBoost - Dataset df_treino_carajas_v3
+Threshold: 0.35
+
+Matriz de confusão bruta:
+[[370  48]
+ [ 47  77]]
+Verdadeiros negativos (TN): 370
+Falsos positivos (FP): 48
+Falsos negativos (FN): 47
+Verdadeiros positivos (TP): 77
+Acurácia calculada: 0.8247
+Precisão da classe positiva: 0.6160
+Recall da classe positiva: 0.6210
+Especificidade da classe negativa: 0.8852
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8873    0.8852    0.8862       418
+           1     0.6160    0.6210    0.6185       124
+
+    accuracy                         0.8247       542
+   macro avg     0.7516    0.7531    0.7524       542
+weighted avg     0.8252    0.8247    0.8250       542
+
+--------------------------------------------------------------------------------
+
+XGBoost - Dataset df_treino_carajas_v3
+Threshold: 0.30
+
+Matriz de confusão bruta:
+[[359  59]
+ [ 42  82]]
+Verdadeiros negativos (TN): 359
+Falsos positivos (FP): 59
+Falsos negativos (FN): 42
+Verdadeiros positivos (TP): 82
+Acurácia calculada: 0.8137
+Precisão da classe positiva: 0.5816
+Recall da classe positiva: 0.6613
+Especificidade da classe negativa: 0.8589
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8953    0.8589    0.8767       418
+           1     0.5816    0.6613    0.6189       124
+
+    accuracy                         0.8137       542
+   macro avg     0.7384    0.7601    0.7478       542
+weighted avg     0.8235    0.8137    0.8177       542
+
+--------------------------------------------------------------------------------
+
+IMPORTÂNCIA DAS VARIÁVEIS
+ modelo                             variavel  importancia_media  desvio_padrao  topografia
+XGBoost                    desenv_aproximado           0.236093       0.030445        True
+XGBoost dificuldade_interna_blocos_instaveis           0.087079       0.021160       False
+XGBoost   arqueologia_paleontologia_ceramico           0.024483       0.004805       False
+XGBoost                               raizes           0.023315       0.010784       False
+XGBoost         ocorrencia_guano_concentrado           0.023209       0.007615       False
+XGBoost                   desnivel_propeccao           0.021663       0.008932        True
+XGBoost                         zona_afotica           0.020566       0.008126       False
+XGBoost       tipo_espeleotema_escorrimentos           0.019434       0.006425       False
+XGBoost              tipo_espeleotema_crosta           0.018849       0.010400       False
+XGBoost            ocorrencia_guano_disperso           0.018826       0.005551       False
+XGBoost     dificuldade_interna_rastejamento           0.017629       0.006743       False
+XGBoost       feicao_interna_blocos_abatidos           0.016784       0.006529       False
+XGBoost           feicao_interna_canaliculos           0.015725       0.009122       False
+XGBoost       animal_observado_invertebrados           0.015403       0.005056       False
+XGBoost       feicao_hidrologica_gotejamento           0.014923       0.004891       False
+
+IMPORTÂNCIA DAS VARIÁVEIS DE TOPOGRAFIA
+ modelo           variavel  importancia_media  desvio_padrao  topografia
+XGBoost  desenv_aproximado           0.236093       0.030445        True
+XGBoost desnivel_propeccao           0.021663       0.008932        True
+XGBoost       nome_entrada          -0.001296       0.001499        True
+
+================================================================================
+DECISION TREE
+================================================================================
+ROC-AUC: 0.6746
+Average Precision: 0.3598
+
+Decision Tree - Dataset df_treino_carajas_v3
+Threshold: 0.50
+
+Matriz de confusão bruta:
+[[343  75]
+ [ 60  64]]
+Verdadeiros negativos (TN): 343
+Falsos positivos (FP): 75
+Falsos negativos (FN): 60
+Verdadeiros positivos (TP): 64
+Acurácia calculada: 0.7509
+Precisão da classe positiva: 0.4604
+Recall da classe positiva: 0.5161
+Especificidade da classe negativa: 0.8206
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8511    0.8206    0.8356       418
+           1     0.4604    0.5161    0.4867       124
+
+    accuracy                         0.7509       542
+   macro avg     0.6558    0.6684    0.6611       542
+weighted avg     0.7617    0.7509    0.7558       542
+
+--------------------------------------------------------------------------------
+
+Decision Tree - Dataset df_treino_carajas_v3
+Threshold: 0.45
+
+Matriz de confusão bruta:
+[[343  75]
+ [ 60  64]]
+Verdadeiros negativos (TN): 343
+Falsos positivos (FP): 75
+Falsos negativos (FN): 60
+Verdadeiros positivos (TP): 64
+Acurácia calculada: 0.7509
+Precisão da classe positiva: 0.4604
+Recall da classe positiva: 0.5161
+Especificidade da classe negativa: 0.8206
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8511    0.8206    0.8356       418
+           1     0.4604    0.5161    0.4867       124
+
+    accuracy                         0.7509       542
+   macro avg     0.6558    0.6684    0.6611       542
+weighted avg     0.7617    0.7509    0.7558       542
+
+--------------------------------------------------------------------------------
+
+Decision Tree - Dataset df_treino_carajas_v3
+Threshold: 0.40
+
+Matriz de confusão bruta:
+[[339  79]
+ [ 58  66]]
+Verdadeiros negativos (TN): 339
+Falsos positivos (FP): 79
+Falsos negativos (FN): 58
+Verdadeiros positivos (TP): 66
+Acurácia calculada: 0.7472
+Precisão da classe positiva: 0.4552
+Recall da classe positiva: 0.5323
+Especificidade da classe negativa: 0.8110
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8539    0.8110    0.8319       418
+           1     0.4552    0.5323    0.4907       124
+
+    accuracy                         0.7472       542
+   macro avg     0.6545    0.6716    0.6613       542
+weighted avg     0.7627    0.7472    0.7538       542
+
+--------------------------------------------------------------------------------
+
+Decision Tree - Dataset df_treino_carajas_v3
+Threshold: 0.35
+
+Matriz de confusão bruta:
+[[339  79]
+ [ 58  66]]
+Verdadeiros negativos (TN): 339
+Falsos positivos (FP): 79
+Falsos negativos (FN): 58
+Verdadeiros positivos (TP): 66
+Acurácia calculada: 0.7472
+Precisão da classe positiva: 0.4552
+Recall da classe positiva: 0.5323
+Especificidade da classe negativa: 0.8110
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8539    0.8110    0.8319       418
+           1     0.4552    0.5323    0.4907       124
+
+    accuracy                         0.7472       542
+   macro avg     0.6545    0.6716    0.6613       542
+weighted avg     0.7627    0.7472    0.7538       542
+
+--------------------------------------------------------------------------------
+
+Decision Tree - Dataset df_treino_carajas_v3
+Threshold: 0.30
+
+Matriz de confusão bruta:
+[[339  79]
+ [ 58  66]]
+Verdadeiros negativos (TN): 339
+Falsos positivos (FP): 79
+Falsos negativos (FN): 58
+Verdadeiros positivos (TP): 66
+Acurácia calculada: 0.7472
+Precisão da classe positiva: 0.4552
+Recall da classe positiva: 0.5323
+Especificidade da classe negativa: 0.8110
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8539    0.8110    0.8319       418
+           1     0.4552    0.5323    0.4907       124
+
+    accuracy                         0.7472       542
+   macro avg     0.6545    0.6716    0.6613       542
+weighted avg     0.7627    0.7472    0.7538       542
+
+--------------------------------------------------------------------------------
+
+IMPORTÂNCIA DAS VARIÁVEIS
+       modelo                             variavel  importancia_media  desvio_padrao  topografia
+Decision Tree                    desenv_aproximado           0.076964       0.012565        True
+Decision Tree dificuldade_interna_blocos_instaveis           0.037445       0.011328       False
+Decision Tree              tipo_espeleotema_crosta           0.022144       0.011462       False
+Decision Tree                               raizes           0.021045       0.009740       False
+Decision Tree       tipo_espeleotema_escorrimentos           0.020311       0.005073       False
+Decision Tree           feicao_interna_canaliculos           0.019412       0.009647       False
+Decision Tree            animal_observado_morcegos           0.017714       0.007630       False
+Decision Tree            ocorrencia_guano_disperso           0.014578       0.008866       False
+Decision Tree   arqueologia_paleontologia_ceramico           0.013563       0.004762       False
+Decision Tree          tipo_espeleotema_coraloides           0.013017       0.006349       False
+Decision Tree       feicao_hidrologica_gotejamento           0.012390       0.009594       False
+Decision Tree       feicao_interna_blocos_abatidos           0.012361       0.010374       False
+Decision Tree                   desnivel_propeccao           0.012253       0.009406        True
+Decision Tree     dificuldade_interna_rastejamento           0.011753       0.010684       False
+Decision Tree             animal_observado_repteis           0.005541       0.002665       False
+
+IMPORTÂNCIA DAS VARIÁVEIS DE TOPOGRAFIA
+       modelo           variavel  importancia_media  desvio_padrao  topografia
+Decision Tree  desenv_aproximado           0.076964       0.012565        True
+Decision Tree desnivel_propeccao           0.012253       0.009406        True
+Decision Tree       nome_entrada           0.000732       0.001512        True
+
+================================================================================
+RANDOM FOREST
+================================================================================
+ROC-AUC: 0.8443
+Average Precision: 0.6455
+
+Random Forest - Dataset df_treino_carajas_v3
+Threshold: 0.50
+
+Matriz de confusão bruta:
+[[399  19]
+ [ 70  54]]
+Verdadeiros negativos (TN): 399
+Falsos positivos (FP): 19
+Falsos negativos (FN): 70
+Verdadeiros positivos (TP): 54
+Acurácia calculada: 0.8358
+Precisão da classe positiva: 0.7397
+Recall da classe positiva: 0.4355
+Especificidade da classe negativa: 0.9545
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8507    0.9545    0.8997       418
+           1     0.7397    0.4355    0.5482       124
+
+    accuracy                         0.8358       542
+   macro avg     0.7952    0.6950    0.7239       542
+weighted avg     0.8253    0.8358    0.8193       542
+
+--------------------------------------------------------------------------------
+
+Random Forest - Dataset df_treino_carajas_v3
+Threshold: 0.45
+
+Matriz de confusão bruta:
+[[392  26]
+ [ 60  64]]
+Verdadeiros negativos (TN): 392
+Falsos positivos (FP): 26
+Falsos negativos (FN): 60
+Verdadeiros positivos (TP): 64
+Acurácia calculada: 0.8413
+Precisão da classe positiva: 0.7111
+Recall da classe positiva: 0.5161
+Especificidade da classe negativa: 0.9378
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8673    0.9378    0.9011       418
+           1     0.7111    0.5161    0.5981       124
+
+    accuracy                         0.8413       542
+   macro avg     0.7892    0.7270    0.7496       542
+weighted avg     0.8315    0.8413    0.8318       542
+
+--------------------------------------------------------------------------------
+
+Random Forest - Dataset df_treino_carajas_v3
+Threshold: 0.40
+
+Matriz de confusão bruta:
+[[386  32]
+ [ 54  70]]
+Verdadeiros negativos (TN): 386
+Falsos positivos (FP): 32
+Falsos negativos (FN): 54
+Verdadeiros positivos (TP): 70
+Acurácia calculada: 0.8413
+Precisão da classe positiva: 0.6863
+Recall da classe positiva: 0.5645
+Especificidade da classe negativa: 0.9234
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8773    0.9234    0.8998       418
+           1     0.6863    0.5645    0.6195       124
+
+    accuracy                         0.8413       542
+   macro avg     0.7818    0.7440    0.7596       542
+weighted avg     0.8336    0.8413    0.8356       542
+
+--------------------------------------------------------------------------------
+
+Random Forest - Dataset df_treino_carajas_v3
+Threshold: 0.35
+
+Matriz de confusão bruta:
+[[372  46]
+ [ 45  79]]
+Verdadeiros negativos (TN): 372
+Falsos positivos (FP): 46
+Falsos negativos (FN): 45
+Verdadeiros positivos (TP): 79
+Acurácia calculada: 0.8321
+Precisão da classe positiva: 0.6320
+Recall da classe positiva: 0.6371
+Especificidade da classe negativa: 0.8900
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8921    0.8900    0.8910       418
+           1     0.6320    0.6371    0.6345       124
+
+    accuracy                         0.8321       542
+   macro avg     0.7620    0.7635    0.7628       542
+weighted avg     0.8326    0.8321    0.8323       542
+
+--------------------------------------------------------------------------------
+
+Random Forest - Dataset df_treino_carajas_v3
+Threshold: 0.30
+
+Matriz de confusão bruta:
+[[350  68]
+ [ 36  88]]
+Verdadeiros negativos (TN): 350
+Falsos positivos (FP): 68
+Falsos negativos (FN): 36
+Verdadeiros positivos (TP): 88
+Acurácia calculada: 0.8081
+Precisão da classe positiva: 0.5641
+Recall da classe positiva: 0.7097
+Especificidade da classe negativa: 0.8373
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.9067    0.8373    0.8706       418
+           1     0.5641    0.7097    0.6286       124
+
+    accuracy                         0.8081       542
+   macro avg     0.7354    0.7735    0.7496       542
+weighted avg     0.8283    0.8081    0.8153       542
+
+--------------------------------------------------------------------------------
+
+IMPORTÂNCIA DAS VARIÁVEIS
+       modelo                             variavel  importancia_media  desvio_padrao  topografia
+Random Forest                    desenv_aproximado           0.111674       0.023645        True
+Random Forest dificuldade_interna_blocos_instaveis           0.067261       0.025125       False
+Random Forest                         zona_afotica           0.035224       0.013397       False
+Random Forest         ocorrencia_guano_concentrado           0.034117       0.011848       False
+Random Forest                   desnivel_propeccao           0.019891       0.009476        True
+Random Forest       tipo_espeleotema_escorrimentos           0.018390       0.005405       False
+Random Forest              tipo_espeleotema_crosta           0.014251       0.013856       False
+Random Forest   arqueologia_paleontologia_ceramico           0.013348       0.005490       False
+Random Forest     dificuldade_interna_rastejamento           0.011634       0.005344       False
+Random Forest            animal_observado_morcegos           0.009509       0.017873       False
+Random Forest            ocorrencia_guano_disperso           0.009496       0.005446       False
+Random Forest                               raizes           0.009005       0.017622       False
+Random Forest       animal_observado_invertebrados           0.005849       0.004457       False
+Random Forest     dificuldade_interna_quebra_corpo           0.005664       0.005194       False
+Random Forest            animal_observado_anfibios           0.005297       0.005805       False
+
+IMPORTÂNCIA DAS VARIÁVEIS DE TOPOGRAFIA
+       modelo           variavel  importancia_media  desvio_padrao  topografia
+Random Forest  desenv_aproximado           0.111674       0.023645        True
+Random Forest desnivel_propeccao           0.019891       0.009476        True
+Random Forest       nome_entrada          -0.000321       0.001537        True
+
+================================================================================
+COMPARAÇÃO FINAL DOS MODELOS
+================================================================================
+             dataset        modelo  roc_auc  average_precision  registros_total  registros_treino  registros_teste  quantidade_variaveis
+df_treino_carajas_v3       XGBoost 0.859720           0.693153             2707              2165              542                    47
+df_treino_carajas_v3 Random Forest 0.844334           0.645548             2707              2165              542                    47
+df_treino_carajas_v3 Decision Tree 0.674622           0.359784             2707              2165              542                    47
+
+Melhor ROC-AUC: XGBoost (0.8597)
+Melhor Average Precision: XGBoost (0.6932)

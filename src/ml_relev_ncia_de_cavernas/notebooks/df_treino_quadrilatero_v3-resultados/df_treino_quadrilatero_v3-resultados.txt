@@ -1,0 +1,538 @@
+================================================================================
+INFORMAÇÕES DO DATASET
+================================================================================
+Dataset: df_treino_quadrilatero_v3
+Total de registros antes do split: 1269
+Total de variáveis preditoras: 49
+Tamanho de X completo: (1269, 49)
+Tamanho de y completo: (1269,)
+Registros de treinamento: 1015
+Registros de teste: 254
+Percentual efetivo de treinamento: 79.98%
+Percentual efetivo de teste: 20.02%
+
+Distribuição completa do target:
+target
+0    994
+1    275
+
+Distribuição percentual completa:
+target
+0    78.33
+1    21.67
+
+Distribuição do target no treino:
+target
+0    795
+1    220
+
+Distribuição do target no teste:
+target
+0    199
+1     55
+
+================================================================================
+XGBOOST
+================================================================================
+ROC-AUC: 0.7858
+Average Precision: 0.4795
+
+XGBoost - Dataset df_treino_quadrilatero_v3
+Threshold: 0.50
+
+Matriz de confusão bruta:
+[[183  16]
+ [ 33  22]]
+Verdadeiros negativos (TN): 183
+Falsos positivos (FP): 16
+Falsos negativos (FN): 33
+Verdadeiros positivos (TP): 22
+Acurácia calculada: 0.8071
+Precisão da classe positiva: 0.5789
+Recall da classe positiva: 0.4000
+Especificidade da classe negativa: 0.9196
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8472    0.9196    0.8819       199
+           1     0.5789    0.4000    0.4731        55
+
+    accuracy                         0.8071       254
+   macro avg     0.7131    0.6598    0.6775       254
+weighted avg     0.7891    0.8071    0.7934       254
+
+--------------------------------------------------------------------------------
+
+XGBoost - Dataset df_treino_quadrilatero_v3
+Threshold: 0.45
+
+Matriz de confusão bruta:
+[[178  21]
+ [ 28  27]]
+Verdadeiros negativos (TN): 178
+Falsos positivos (FP): 21
+Falsos negativos (FN): 28
+Verdadeiros positivos (TP): 27
+Acurácia calculada: 0.8071
+Precisão da classe positiva: 0.5625
+Recall da classe positiva: 0.4909
+Especificidade da classe negativa: 0.8945
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8641    0.8945    0.8790       199
+           1     0.5625    0.4909    0.5243        55
+
+    accuracy                         0.8071       254
+   macro avg     0.7133    0.6927    0.7016       254
+weighted avg     0.7988    0.8071    0.8022       254
+
+--------------------------------------------------------------------------------
+
+XGBoost - Dataset df_treino_quadrilatero_v3
+Threshold: 0.40
+
+Matriz de confusão bruta:
+[[174  25]
+ [ 27  28]]
+Verdadeiros negativos (TN): 174
+Falsos positivos (FP): 25
+Falsos negativos (FN): 27
+Verdadeiros positivos (TP): 28
+Acurácia calculada: 0.7953
+Precisão da classe positiva: 0.5283
+Recall da classe positiva: 0.5091
+Especificidade da classe negativa: 0.8744
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8657    0.8744    0.8700       199
+           1     0.5283    0.5091    0.5185        55
+
+    accuracy                         0.7953       254
+   macro avg     0.6970    0.6917    0.6943       254
+weighted avg     0.7926    0.7953    0.7939       254
+
+--------------------------------------------------------------------------------
+
+XGBoost - Dataset df_treino_quadrilatero_v3
+Threshold: 0.35
+
+Matriz de confusão bruta:
+[[168  31]
+ [ 25  30]]
+Verdadeiros negativos (TN): 168
+Falsos positivos (FP): 31
+Falsos negativos (FN): 25
+Verdadeiros positivos (TP): 30
+Acurácia calculada: 0.7795
+Precisão da classe positiva: 0.4918
+Recall da classe positiva: 0.5455
+Especificidade da classe negativa: 0.8442
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8705    0.8442    0.8571       199
+           1     0.4918    0.5455    0.5172        55
+
+    accuracy                         0.7795       254
+   macro avg     0.6811    0.6948    0.6872       254
+weighted avg     0.7885    0.7795    0.7835       254
+
+--------------------------------------------------------------------------------
+
+XGBoost - Dataset df_treino_quadrilatero_v3
+Threshold: 0.30
+
+Matriz de confusão bruta:
+[[162  37]
+ [ 22  33]]
+Verdadeiros negativos (TN): 162
+Falsos positivos (FP): 37
+Falsos negativos (FN): 22
+Verdadeiros positivos (TP): 33
+Acurácia calculada: 0.7677
+Precisão da classe positiva: 0.4714
+Recall da classe positiva: 0.6000
+Especificidade da classe negativa: 0.8141
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8804    0.8141    0.8460       199
+           1     0.4714    0.6000    0.5280        55
+
+    accuracy                         0.7677       254
+   macro avg     0.6759    0.7070    0.6870       254
+weighted avg     0.7919    0.7677    0.7771       254
+
+--------------------------------------------------------------------------------
+
+IMPORTÂNCIA DAS VARIÁVEIS
+ modelo                                variavel  importancia_media  desvio_padrao  topografia
+XGBoost                       desenv_aproximado           0.152089       0.029267        True
+XGBoost                      desnivel_propeccao           0.038095       0.022225        True
+XGBoost litotipo_prospeccao_rochas_carbonaticas           0.027740       0.013116       False
+XGBoost              feicao_interna_canaliculos           0.023850       0.014887       False
+XGBoost             tipo_espeleotema_coraloides           0.020450       0.015687       False
+XGBoost                            nome_entrada           0.015856       0.005451        True
+XGBoost          animal_observado_invertebrados           0.013273       0.011921       False
+XGBoost               feicao_interna_claraboias           0.009664       0.007701       False
+XGBoost                                  raizes           0.008379       0.011547       False
+XGBoost          feicao_interna_blocos_abatidos           0.004675       0.008622       False
+XGBoost               tipo_espeleotema_pingente           0.003000       0.000914       False
+XGBoost           feicao_hidrologica_percolacao           0.000959       0.001003       False
+XGBoost          feicao_hidrologica_gotejamento           0.000940       0.012965       False
+XGBoost                 tipo_cavidade__cavidade           0.000497       0.003452       False
+XGBoost            ocorrencia_guano_concentrado           0.000383       0.001226       False
+
+IMPORTÂNCIA DAS VARIÁVEIS DE TOPOGRAFIA
+ modelo           variavel  importancia_media  desvio_padrao  topografia
+XGBoost  desenv_aproximado           0.152089       0.029267        True
+XGBoost desnivel_propeccao           0.038095       0.022225        True
+XGBoost       nome_entrada           0.015856       0.005451        True
+
+================================================================================
+DECISION TREE
+================================================================================
+ROC-AUC: 0.6055
+Average Precision: 0.2796
+
+Decision Tree - Dataset df_treino_quadrilatero_v3
+Threshold: 0.50
+
+Matriz de confusão bruta:
+[[165  34]
+ [ 34  21]]
+Verdadeiros negativos (TN): 165
+Falsos positivos (FP): 34
+Falsos negativos (FN): 34
+Verdadeiros positivos (TP): 21
+Acurácia calculada: 0.7323
+Precisão da classe positiva: 0.3818
+Recall da classe positiva: 0.3818
+Especificidade da classe negativa: 0.8291
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8291    0.8291    0.8291       199
+           1     0.3818    0.3818    0.3818        55
+
+    accuracy                         0.7323       254
+   macro avg     0.6055    0.6055    0.6055       254
+weighted avg     0.7323    0.7323    0.7323       254
+
+--------------------------------------------------------------------------------
+
+Decision Tree - Dataset df_treino_quadrilatero_v3
+Threshold: 0.45
+
+Matriz de confusão bruta:
+[[165  34]
+ [ 34  21]]
+Verdadeiros negativos (TN): 165
+Falsos positivos (FP): 34
+Falsos negativos (FN): 34
+Verdadeiros positivos (TP): 21
+Acurácia calculada: 0.7323
+Precisão da classe positiva: 0.3818
+Recall da classe positiva: 0.3818
+Especificidade da classe negativa: 0.8291
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8291    0.8291    0.8291       199
+           1     0.3818    0.3818    0.3818        55
+
+    accuracy                         0.7323       254
+   macro avg     0.6055    0.6055    0.6055       254
+weighted avg     0.7323    0.7323    0.7323       254
+
+--------------------------------------------------------------------------------
+
+Decision Tree - Dataset df_treino_quadrilatero_v3
+Threshold: 0.40
+
+Matriz de confusão bruta:
+[[165  34]
+ [ 34  21]]
+Verdadeiros negativos (TN): 165
+Falsos positivos (FP): 34
+Falsos negativos (FN): 34
+Verdadeiros positivos (TP): 21
+Acurácia calculada: 0.7323
+Precisão da classe positiva: 0.3818
+Recall da classe positiva: 0.3818
+Especificidade da classe negativa: 0.8291
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8291    0.8291    0.8291       199
+           1     0.3818    0.3818    0.3818        55
+
+    accuracy                         0.7323       254
+   macro avg     0.6055    0.6055    0.6055       254
+weighted avg     0.7323    0.7323    0.7323       254
+
+--------------------------------------------------------------------------------
+
+Decision Tree - Dataset df_treino_quadrilatero_v3
+Threshold: 0.35
+
+Matriz de confusão bruta:
+[[165  34]
+ [ 34  21]]
+Verdadeiros negativos (TN): 165
+Falsos positivos (FP): 34
+Falsos negativos (FN): 34
+Verdadeiros positivos (TP): 21
+Acurácia calculada: 0.7323
+Precisão da classe positiva: 0.3818
+Recall da classe positiva: 0.3818
+Especificidade da classe negativa: 0.8291
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8291    0.8291    0.8291       199
+           1     0.3818    0.3818    0.3818        55
+
+    accuracy                         0.7323       254
+   macro avg     0.6055    0.6055    0.6055       254
+weighted avg     0.7323    0.7323    0.7323       254
+
+--------------------------------------------------------------------------------
+
+Decision Tree - Dataset df_treino_quadrilatero_v3
+Threshold: 0.30
+
+Matriz de confusão bruta:
+[[165  34]
+ [ 34  21]]
+Verdadeiros negativos (TN): 165
+Falsos positivos (FP): 34
+Falsos negativos (FN): 34
+Verdadeiros positivos (TP): 21
+Acurácia calculada: 0.7323
+Precisão da classe positiva: 0.3818
+Recall da classe positiva: 0.3818
+Especificidade da classe negativa: 0.8291
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8291    0.8291    0.8291       199
+           1     0.3818    0.3818    0.3818        55
+
+    accuracy                         0.7323       254
+   macro avg     0.6055    0.6055    0.6055       254
+weighted avg     0.7323    0.7323    0.7323       254
+
+--------------------------------------------------------------------------------
+
+IMPORTÂNCIA DAS VARIÁVEIS
+       modelo                                variavel  importancia_media  desvio_padrao  topografia
+Decision Tree                       desenv_aproximado           0.051811       0.015555        True
+Decision Tree   litotipo_prospeccao_rochas_siliciosas           0.013314       0.007577       False
+Decision Tree litotipo_prospeccao_rochas_carbonaticas           0.013244       0.008952       False
+Decision Tree               ocorrencia_guano_disperso           0.009660       0.003519       False
+Decision Tree           feicao_hidrologica_percolacao           0.007245       0.002417       False
+Decision Tree              feicao_interna_canaliculos           0.005860       0.012245       False
+Decision Tree    dificuldade_interna_blocos_instaveis           0.004439       0.004189       False
+Decision Tree          feicao_hidrologica_gotejamento           0.003582       0.010061       False
+Decision Tree                  feicao_interna_conduto           0.003447       0.002062       False
+Decision Tree                                  raizes           0.002671       0.008252       False
+Decision Tree            ocorrencia_guano_concentrado           0.002343       0.000781       False
+Decision Tree                 tipo_espeleotema_crosta           0.002214       0.004374       False
+Decision Tree        arqueologia_paleontologia_ossada           0.001062       0.003367       False
+Decision Tree          animal_observado_invertebrados           0.000969       0.003506       False
+Decision Tree          tipo_espeleotema_escorrimentos           0.000897       0.001879       False
+
+IMPORTÂNCIA DAS VARIÁVEIS DE TOPOGRAFIA
+       modelo           variavel  importancia_media  desvio_padrao  topografia
+Decision Tree  desenv_aproximado           0.051811       0.015555        True
+Decision Tree       nome_entrada          -0.001258       0.002907        True
+Decision Tree desnivel_propeccao          -0.008756       0.025776        True
+
+================================================================================
+RANDOM FOREST
+================================================================================
+ROC-AUC: 0.7872
+Average Precision: 0.4729
+
+Random Forest - Dataset df_treino_quadrilatero_v3
+Threshold: 0.50
+
+Matriz de confusão bruta:
+[[192   7]
+ [ 42  13]]
+Verdadeiros negativos (TN): 192
+Falsos positivos (FP): 7
+Falsos negativos (FN): 42
+Verdadeiros positivos (TP): 13
+Acurácia calculada: 0.8071
+Precisão da classe positiva: 0.6500
+Recall da classe positiva: 0.2364
+Especificidade da classe negativa: 0.9648
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8205    0.9648    0.8868       199
+           1     0.6500    0.2364    0.3467        55
+
+    accuracy                         0.8071       254
+   macro avg     0.7353    0.6006    0.6168       254
+weighted avg     0.7836    0.8071    0.7699       254
+
+--------------------------------------------------------------------------------
+
+Random Forest - Dataset df_treino_quadrilatero_v3
+Threshold: 0.45
+
+Matriz de confusão bruta:
+[[187  12]
+ [ 40  15]]
+Verdadeiros negativos (TN): 187
+Falsos positivos (FP): 12
+Falsos negativos (FN): 40
+Verdadeiros positivos (TP): 15
+Acurácia calculada: 0.7953
+Precisão da classe positiva: 0.5556
+Recall da classe positiva: 0.2727
+Especificidade da classe negativa: 0.9397
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8238    0.9397    0.8779       199
+           1     0.5556    0.2727    0.3659        55
+
+    accuracy                         0.7953       254
+   macro avg     0.6897    0.6062    0.6219       254
+weighted avg     0.7657    0.7953    0.7671       254
+
+--------------------------------------------------------------------------------
+
+Random Forest - Dataset df_treino_quadrilatero_v3
+Threshold: 0.40
+
+Matriz de confusão bruta:
+[[176  23]
+ [ 32  23]]
+Verdadeiros negativos (TN): 176
+Falsos positivos (FP): 23
+Falsos negativos (FN): 32
+Verdadeiros positivos (TP): 23
+Acurácia calculada: 0.7835
+Precisão da classe positiva: 0.5000
+Recall da classe positiva: 0.4182
+Especificidade da classe negativa: 0.8844
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8462    0.8844    0.8649       199
+           1     0.5000    0.4182    0.4554        55
+
+    accuracy                         0.7835       254
+   macro avg     0.6731    0.6513    0.6602       254
+weighted avg     0.7712    0.7835    0.7762       254
+
+--------------------------------------------------------------------------------
+
+Random Forest - Dataset df_treino_quadrilatero_v3
+Threshold: 0.35
+
+Matriz de confusão bruta:
+[[171  28]
+ [ 25  30]]
+Verdadeiros negativos (TN): 171
+Falsos positivos (FP): 28
+Falsos negativos (FN): 25
+Verdadeiros positivos (TP): 30
+Acurácia calculada: 0.7913
+Precisão da classe positiva: 0.5172
+Recall da classe positiva: 0.5455
+Especificidade da classe negativa: 0.8593
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8724    0.8593    0.8658       199
+           1     0.5172    0.5455    0.5310        55
+
+    accuracy                         0.7913       254
+   macro avg     0.6948    0.7024    0.6984       254
+weighted avg     0.7955    0.7913    0.7933       254
+
+--------------------------------------------------------------------------------
+
+Random Forest - Dataset df_treino_quadrilatero_v3
+Threshold: 0.30
+
+Matriz de confusão bruta:
+[[157  42]
+ [ 21  34]]
+Verdadeiros negativos (TN): 157
+Falsos positivos (FP): 42
+Falsos negativos (FN): 21
+Verdadeiros positivos (TP): 34
+Acurácia calculada: 0.7520
+Precisão da classe positiva: 0.4474
+Recall da classe positiva: 0.6182
+Especificidade da classe negativa: 0.7889
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0     0.8820    0.7889    0.8329       199
+           1     0.4474    0.6182    0.5191        55
+
+    accuracy                         0.7520       254
+   macro avg     0.6647    0.7036    0.6760       254
+weighted avg     0.7879    0.7520    0.7649       254
+
+--------------------------------------------------------------------------------
+
+IMPORTÂNCIA DAS VARIÁVEIS
+       modelo                                variavel  importancia_media  desvio_padrao  topografia
+Random Forest                       desenv_aproximado           0.101396       0.042816        True
+Random Forest                      desnivel_propeccao           0.039428       0.017772        True
+Random Forest              feicao_interna_canaliculos           0.026560       0.020018       False
+Random Forest litotipo_prospeccao_rochas_carbonaticas           0.024860       0.009068       False
+Random Forest             tipo_espeleotema_coraloides           0.016688       0.015890       False
+Random Forest               feicao_interna_claraboias           0.015694       0.013808       False
+Random Forest                            nome_entrada           0.014390       0.008282        True
+Random Forest            ocorrencia_guano_concentrado           0.009064       0.002753       False
+Random Forest           tipo_espeleotema_estalactites           0.008497       0.003427       False
+Random Forest    litotipo_prospeccao_rochas_peliticas           0.006763       0.001701       False
+Random Forest               tipo_espeleotema_pingente           0.005907       0.003949       False
+Random Forest                 tipo_cavidade__cavidade           0.005351       0.008611       False
+Random Forest                  feicao_interna_conduto           0.004539       0.000750       False
+Random Forest   litotipo_prospeccao_rochas_siliciosas           0.003913       0.007776       False
+Random Forest           tipo_espeleotema_estalagmites           0.002148       0.001540       False
+
+IMPORTÂNCIA DAS VARIÁVEIS DE TOPOGRAFIA
+       modelo           variavel  importancia_media  desvio_padrao  topografia
+Random Forest  desenv_aproximado           0.101396       0.042816        True
+Random Forest desnivel_propeccao           0.039428       0.017772        True
+Random Forest       nome_entrada           0.014390       0.008282        True
+
+================================================================================
+COMPARAÇÃO FINAL DOS MODELOS
+================================================================================
+                  dataset        modelo  roc_auc  average_precision  registros_total  registros_treino  registros_teste  quantidade_variaveis
+df_treino_quadrilatero_v3       XGBoost 0.785838           0.479493             1269              1015              254                    49
+df_treino_quadrilatero_v3 Random Forest 0.787209           0.472905             1269              1015              254                    49
+df_treino_quadrilatero_v3 Decision Tree 0.605482           0.279643             1269              1015              254                    49
+
+Melhor ROC-AUC: Random Forest (0.7872)
+Melhor Average Precision: XGBoost (0.4795)
