@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).parent
 
 app = FastAPI()
 print(BASE_DIR)
-app.state.model = joblib.load(BASE_DIR / "artifacts/random_forest_carajas_v4.pkl")
+app.state.model = joblib.load(BASE_DIR / "artifacts/random_forest_v4.pkl")
 
 app.mount(
     "/static",

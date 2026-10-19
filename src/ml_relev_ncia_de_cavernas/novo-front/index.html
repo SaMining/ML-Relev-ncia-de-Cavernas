@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Classificador de Relevância de Cavidades</title>
+
+    <script src="../static/js/app.js" defer></script>
+
+    <style>
+        /* =====================================================
+           VARIÁVEIS
+        ===================================================== */
+
+        :root {
+            --color-primary: #087f7c;
+            --color-primary-dark: #066d6b;
+            --color-accent: #f2b91d;
+            --color-card: #ffffff;
+            --color-text: #343a40;
+            --color-text-secondary: #7d8790;
+            --color-button: #e9edef;
+
+            --font-family:
+                "Segoe UI",
+                Tahoma,
+                Geneva,
+                Verdana,
+                sans-serif;
+
+            --screen-padding: clamp(0.6rem, 1vw, 1rem);
+            --card-padding: clamp(1.4rem, 2.5vw, 3rem);
+            --content-gap: clamp(1.5rem, 3.5vw, 4rem);
+
+            --header-height: clamp(3.6rem, 8vh, 5rem);
+            --footer-height: clamp(2.5rem, 7vh, 4.25rem);
+
+            --radius-card: clamp(0.65rem, 1vw, 1rem);
+            --radius-small: 0.65rem;
+            --radius-lg: 2rem;
+
+            --transition: 0.2s ease;
+        }
+
+
+        /* =====================================================
+           RESET E VIEWPORT
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        html {
+            font-size: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: var(--font-family);
+            color: var(--color-text);
+            background: var(--color-primary);
+        }
+
+        button {
+            font: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+
+        /* =====================================================
+           CONTROLE DAS TELAS
+        ===================================================== */
+
+        .screen {
+            display: none;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* =====================================================
+           HOME FULLSCREEN
+        ===================================================== */
+
+        #home {
+            padding:
+                0
+                var(--screen-padding)
+                var(--screen-padding);
+        }
+
+
+        /* =====================================================
+           CABEÇALHO
+        ===================================================== */
+
+        .top-bar {
+            width: 100%;
+            height: var(--header-height);
+            flex: 0 0 var(--header-height);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding-inline: clamp(0.5rem, 2vw, 2.5rem);
+
+            color: #ffffff;
+        }
+
+        .header-left {
+            min-width: 0;
+
+            display: flex;
+            align-items: center;
+            gap: clamp(0.7rem, 1.2vw, 1.25rem);
+        }
+
+        .header-logo {
+            width: auto;
+            height: clamp(2rem, 5vh, 3.1rem);
+            flex-shrink: 0;
+            object-fit: contain;
+            border-radius: var(--radius-small);
+        }
+
+        .footer-logo-arcadis {
+            width: auto;
+            height: clamp(0.9rem, 2vw, 1.35rem);
+            object-fit: contain;
+        }
+
+        .header-title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 1.5rem !important;
+
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           CARD PRINCIPAL
+        ===================================================== */
+
+        .home-card {
+            width: 100%;
+            min-height: 0;
+            flex: 1;
+
+            padding: var(--card-padding);
+
+            display: flex;
+            flex-direction: column;
+
+            overflow: hidden;
+
+            background: var(--color-card);
+            border-radius: var(--radius-card);
+            box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 10%);
+        }
+
+
+        /* =====================================================
+           CONTEÚDO PRINCIPAL
+        ===================================================== */
+
+        .home-content {
+            min-height: 0;
+            flex: 1;
+
+            display: grid;
+            grid-template-columns:
+                minmax(18rem, 42%)
+                minmax(0, 58%);
+
+            align-items: center;
+            gap: var(--content-gap);
+        }
+
+        .home-left {
+            min-width: 0;
+            max-height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .home-right {
+            min-width: 0;
+            min-height: 0;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+
+        /* =====================================================
+           TEXTO
+        ===================================================== */
+
+        .welcome-text {
+            display: block;
+            margin-bottom: clamp(0.2rem, 0.6vh, 0.5rem);
+            letter-spacing: 1px;
+
+            color: #8b9298;
+            font-size: clamp(0.9rem, 1.1vw, 1.25rem);
+            font-weight: 400;
+        }
+
+        .home-title {
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+
+            color: var(--color-primary);
+            font-size: clamp(1.8rem, 2.7vw, 3.4rem);
+            font-weight: 700;
+            line-height: 1.06;
+            text-wrap: balance;
+        }
+
+        .home-description {
+            max-width: 36rem;
+            margin-bottom: 2rem;
+
+            color: var(--color-text-secondary);
+            font-size: clamp(0.82rem, 1vw, 1.1rem);
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           IMAGEM PRINCIPAL
+        ===================================================== */
+
+        .home-right img {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            width: auto;
+            border-radius: var(--radius-lg) !important;
+
+        }
+
+
+        /* =====================================================
+           MENU
+        ===================================================== */
+
+        .home-menu {
+            width: min(100%, 21rem);
+            margin-top: clamp(1rem, 2.5vh, 2rem);
+
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.45rem, 1vh, 0.75rem);
+        }
+
+        .btn {
+            border: none;
+            font-family: inherit;
+            cursor: pointer;
+
+            transition:
+                transform var(--transition),
+                filter var(--transition);
+        }
+
+        .btn:hover {
+            filter: brightness(0.97);
+            cursor: pointer;
+            transform: translateY(-0.1rem);
+        }
+
+        .btn:focus-visible {
+            outline: 0.18rem solid var(--color-accent);
+            outline-offset: 0.15rem;
+        }
+
+        .btn-menu {
+            width: 100%;
+            min-height: clamp(2.65rem, 5.5vh, 3.35rem);
+            padding-inline: clamp(0.8rem, 1.2vw, 1.2rem);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+
+            background: var(--color-button);
+            color: var(--color-primary);
+            border-radius: var(--radius-small);
+
+            font-size: clamp(0.84rem, 0.95vw, 1rem);
+            font-weight: 600;
+            text-align: left;
+        }
+
+
+        /* =====================================================
+           RODAPÉ
+        ===================================================== */
+
+        .home-footer {
+            width: 100%;
+            height: var(--footer-height);
+            min-height: var(--footer-height);
+            flex: 0 0 var(--footer-height);
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 1rem;
+
+            padding-top: clamp(0.5rem, 1vh, 0.8rem);
+        }
+
+        .footer-logo-vale {
+            width: auto;
+            height: clamp(2rem, 5vh, 3rem);
+            object-fit: contain;
+        }
+
+        .footer-powered {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+
+            color: #666666;
+            font-size: clamp(0.65rem, 0.7vw, 0.8rem);
+            white-space: nowrap;
+        }
+
+        .footer-logo-arcadis {
+            width: auto;
+            height: clamp(0.85rem, 2.3vh, 1.35rem);
+            object-fit: contain;
+        }
+
+        /* =====================================================
+   PROCESSAMENTO
+===================================================== */
+
+#processamento {
+    padding:
+        0
+        var(--screen-padding)
+        var(--screen-padding);
+}
+
+
+/* =====================================================
+   HEADER DA TELA
+===================================================== */
+
+.page-header-center {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: white;
+
+    text-align: center;
+}
+
+.page-header-center h1 {
+
+    margin: 0;
+
+    font-size: clamp(1.2rem, 2vw, 2rem);
+
+    font-weight: 700;
+}
+
+.page-header-center span {
+
+    margin-top: .25rem;
+
+    font-size: clamp(.8rem, 1vw, .95rem);
+
+    opacity: .95;
+}
+
+.header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 1.5rem;
+}
+
+
+/* =====================================================
+   ABAS
+===================================================== */
+
+.tabs {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    text-align: center;
+
+    gap: 1rem;
+
+    margin-bottom: 1rem;
+}
+
+.btn-tab {
+
+    width: 10rem;
+
+    height: 3rem;
+
+    display: flex;
+
+    align-items: center;
+    padding: auto;
+
+    justify-content: space-between;
+
+    padding: 0 1.5rem;
+
+    border: none;
+
+    border-radius: 20px;
+
+    background: #0eb7b0;
+
+    color: white;
+
+    font-size: 0.65rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn-tab.active {
+
+    background: var(--color-accent);
+
+    color: var(--color-primary-dark);
+}
+
+
+/* =====================================================
+   CARD PRINCIPAL
+===================================================== */
+
+.processing-card {
+
+    width: 100%;
+
+    flex: 1;
+
+    background: white;
+
+    border-radius: var(--radius-card);
+
+    padding: 2rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   CABEÇALHO DO CARD
+===================================================== */
+
+.processing-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 2rem;
+}
+
+.section-title {
+
+    color: var(--color-primary);
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    margin-bottom: .5rem;
+}
+
+.section-subtitle {
+
+    color: var(--color-text-secondary);
+
+    font-size: 1rem;
+}
+
+
+/* =====================================================
+   TEMPLATE
+===================================================== */
+
+.template-area {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: .5rem;
+}
+
+.template-area span {
+
+    font-size: .85rem;
+
+    color: var(--color-text-secondary);
+}
+
+.btn-success {
+
+    border: none;
+
+    background: #67b346;
+
+    color: white;
+
+    padding: 1rem 1.5rem;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   DROPZONE
+===================================================== */
+
+.dropzone {
+
+    width: 75%;
+
+    margin: 0 auto;
+
+    height: 20rem;
+
+    border: 2px dashed #a8b0b7;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+
+    padding: 2rem;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.dropzone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    height: 100%;
+    text-align: center;
+}
+
+.dropzone-icon {
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto 1rem;
+
+    border-radius: 10px;
+
+    color: white;
+
+    font-size: 2rem;
+}
+
+.dropzone-title {
+
+    font-size: 1.2rem;
+
+    color: #6b737b;
+
+    margin-bottom: .2rem;
+}
+
+.dropzone-subtitle {
+
+    color: #8a939b;
+
+    margin-bottom: .5rem;
+}
+
+.btn-file {
+
+    background: white;
+
+    border: 1px solid #d0d5da;
+
+    border-radius: 10px;
+
+    padding: 0.5rem 0.5rem;
+
+    cursor: pointer;
+
+    color: var(--color-primary);
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   ARQUIVO
+===================================================== */
+.processing-body {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+}
+.file-card {
+    padding: 0.5rem;
+    min-width: 20rem;
+    max-width: 90%;
+    height: 5rem;
+    border: 1px solid #d3d9de;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.file-info {
+
+    display: flex;
+    padding: 0.5rem 0.5rem;
+
+    align-items: center;
+
+    gap: 1rem;
+}
+
+.file-icon {
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 10px;
+
+    background: #8f979f;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.file-name {
+
+    font-size: 1.1rem;
+
+    padding: 0.8rem 0.8rem;
+
+    font-weight: 600;
+
+    color: var(--color-primary);
+}
+
+.file-meta {
+
+    color: #7d8790;
+
+    margin-top: .25rem;
+}
+
+.file-remove {
+
+    border: none;
+
+    background: none;
+
+    font-size: 2rem;
+
+    color: #7d8790;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   BOTÃO PROCESSAR
+===================================================== */
+
+.actions {
+    
+    text-align: center;
+
+    padding-top: 2rem;
+}
+
+.btn-action {
+
+    border: none;
+
+    background: #eb7a1a;
+
+    color: white;
+
+    font-size: 1.2rem;
+
+    font-weight: 600;
+
+    padding: 1rem 2rem;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.actions small {
+
+    display: block;
+
+    margin-top: 1rem;
+
+    color: #7d8790;
+}
+        /* =====================================================
+           TELAS BAIXAS DE NOTEBOOK
+        ===================================================== */
+
+        @media (max-height: 48rem) {
+            :root {
+                --header-height: clamp(3.2rem, 7vh, 4rem);
+                --footer-height: clamp(2.2rem, 6vh, 3.2rem);
+                --card-padding: clamp(1rem, 2vw, 2rem);
+            }
+
+            .home-title {
+                font-size: clamp(1.65rem, 2.4vw, 2.8rem);
+            }
+
+            .home-description {
+                font-size: clamp(0.78rem, 0.9vw, 1rem);
+                line-height: 1.4;
+            }
+
+            .home-menu {
+                margin-top: clamp(0.75rem, 1.5vh, 1.25rem);
+            }
+
+            .btn-menu {
+                min-height: clamp(2.4rem, 5vh, 2.9rem);
+            }
+
+   
+        }
+
+
+        /* =====================================================
+           TABLETS E TELAS ESTREITAS
+        ===================================================== */
+
+        @media (max-width: 52rem) {
+            body {
+                overflow-y: auto;
+            }
+
+            .screen,
+            .screen.active {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            #home {
+                padding-bottom: var(--screen-padding);
+            }
+
+            .home-card {
+                overflow: visible;
+            }
+
+            .home-content {
+                grid-template-columns: 1fr;
+            }
+
+            .home-left {
+                justify-content: flex-start;
+            }
+
+            .home-right {
+                order: -1;
+                height: clamp(10rem, 30vh, 18rem);
+            }
+
+            .home-right img {
+                max-height: 100%;
+            }
+
+            .home-menu {
+                width: 100%;
+            }
+        }
+
+
+        /* =====================================================
+           CELULAR
+        ===================================================== */
+
+        @media (max-width: 32rem) {
+            .top-bar {
+                padding-inline: 0.35rem;
+            }
+
+            .header-logo {
+                height: 1.8rem;
+            }
+
+            .header-title {
+                font-size: 1rem ;
+                white-space: normal;
+                line-height: 1.15;
+            }
+
+            .home-card {
+                padding: 1rem;
+            }
+
+            .home-title {
+                font-size: clamp(1.55rem, 8vw, 2.15rem);
+          footer {
+                align-items: center;
+            }
+
+            .footer-powered {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 0.2rem;
+            }
+        }}
+    </style>
+    <script>
+        // =====================================================
+// ESTADO DA APLICAÇÃO
+// =====================================================
+
+const state = {
+    currentScreen: "home",
+    selectedFile: null,
+    processing: false
+};
+
+
+// =====================================================
+// NAVEGAÇÃO
+// =====================================================
+
+function showScreen(screenId) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+            screen.classList.remove("active");
+        });
+
+    const screen = document.getElementById(screenId);
+
+    if (screen) {
+
+        screen.classList.add("active");
+
+        state.currentScreen = screenId;
+    }
+}
+
+
+// =====================================================
+// UPLOAD
+// =====================================================
+
+function initializeUpload() {
+
+    const fileInput = document.getElementById("fileInput");
+
+    if (!fileInput) {
+        return;
+    }
+
+    fileInput.addEventListener(
+        "change",
+        handleFileSelection
+    );
+}
+
+
+function handleFileSelection(event) {
+
+    const file = event.target.files[0];
+
+    if (!file) {
+        return;
+    }
+
+    setFile(file);
+}
+
+
+function setFile(file) {
+
+    state.selectedFile = file;
+
+    renderSelectedFile();
+}
+
+
+function removeFile() {
+
+    state.selectedFile = null;
+
+    const fileInput =
+        document.getElementById("fileInput");
+
+    if (fileInput) {
+        fileInput.value = "";
+    }
+
+    renderSelectedFile();
+}
+
+
+// =====================================================
+// RENDERIZAÇÃO DO ARQUIVO
+// =====================================================
+
+function renderSelectedFile() {
+
+    const container =
+        document.getElementById("arquivoSelecionado");
+
+    if (!container) {
+        return;
+    }
+
+    if (!state.selectedFile) {
+
+        container.style.display = "none";
+
+        return;
+    }
+
+    container.style.display = "flex";
+
+    const sizeKb =
+        (state.selectedFile.size / 1024)
+            .toFixed(1);
+
+    container.innerHTML = `
+        <div class="file-info">
+
+            <div class="file-icon">
+                📄
+            </div>
+
+            <div>
+
+                <div class="file-name">
+                    ${state.selectedFile.name}
+                </div>
+
+                <div class="file-meta">
+                    ${sizeKb} KB • XLSX • Pronto para processar
+                </div>
+
+            </div>
+
+        </div>
+
+        <button
+            class="file-remove"
+            type="button"
+            onclick="removeFile()"
+        >
+            ✕
+        </button>
+    `;
+}
+
+
+// =====================================================
+// DRAG AND DROP
+// =====================================================
+
+function initializeDropzone() {
+
+    const dropzone =
+        document.querySelector(".dropzone");
+
+    if (!dropzone) {
+        return;
+    }
+
+    dropzone.addEventListener(
+        "dragover",
+        dragOverHandler
+    );
+
+    dropzone.addEventListener(
+        "dragleave",
+        dragLeaveHandler
+    );
+
+    dropzone.addEventListener(
+        "drop",
+        dropHandler
+    );
+}
+
+
+function dragOverHandler(event) {
+
+    event.preventDefault();
+
+    event.currentTarget
+        .classList
+        .add("dragover");
+}
+
+
+function dragLeaveHandler(event) {
+
+    event.currentTarget
+        .classList
+        .remove("dragover");
+}
+
+
+function dropHandler(event) {
+
+    event.preventDefault();
+
+    const dropzone =
+        event.currentTarget;
+
+    dropzone.classList.remove(
+        "dragover"
+    );
+
+    const file =
+        event.dataTransfer.files[0];
+
+    if (!file) {
+        return;
+    }
+
+    setFile(file);
+}
+
+
+// =====================================================
+// PROCESSAMENTO
+// =====================================================
+
+async function processFile() {
+
+    if (!state.selectedFile) {
+
+        alert(
+            "Selecione uma planilha primeiro."
+        );
+
+        return;
+    }
+
+    try {
+
+        setProcessing(true);
+
+        console.log(
+            "Processando:",
+            state.selectedFile.name
+        );
+
+        /*
+        const formData = new FormData();
+
+        formData.append(
+            "arquivo",
+            state.selectedFile
+        );
+
+        const response =
+            await fetch(
+                "/processar",
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+
+        const result =
+            await response.json();
+        */
+
+        await new Promise(
+            resolve =>
+                setTimeout(resolve, 2000)
+        );
+
+        alert(
+            "Processamento concluído."
+        );
+    }
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Erro ao processar a planilha."
+        );
+    }
+    finally {
+
+        setProcessing(false);
+    }
+}
+
+
+function setProcessing(status) {
+
+    state.processing = status;
+
+    const button =
+        document.getElementById(
+            "btnProcessar"
+        );
+
+    if (!button) {
+        return;
+    }
+
+    if (status) {
+
+        button.disabled = true;
+
+        button.textContent =
+            "Processando...";
+    }
+    else {
+
+        button.disabled = false;
+
+        button.textContent =
+            "Processar Planilha";
+    }
+}
+
+
+// =====================================================
+// INICIALIZAÇÃO
+// =====================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        initializeUpload();
+
+        initializeDropzone();
+
+        renderSelectedFile();
+    }
+);
+    </script>
+</head>
+
+<body>
+
+    <div id="home" class="screen active">
+
+ <header class="top-bar">
+
+    <img src="vale-white.png" class="header-logo">
+
+    <div class="header-title">
+        Classificador de Relevância de Cavidades
+    </div>
+
+    <img src="arcadis-white.png" class="header-logo">
+
+</header>
+
+        <main class="home-card">
+
+            <div class="home-content">
+
+                <section class="home-left">
+
+                    <span class="welcome-text">
+                        Bem-vindo ao
+                    </span>
+
+                    <h1 class="home-title">
+                        Classificador de<br>
+                        Relevância de Cavidades
+                    </h1>
+
+                    <p class="home-description">
+                        Plataforma para classificação automatizada do potencial
+                        de relevância máxima de cavidades naturais, integrando
+                        informações ambientais, geológicas, biológicas e arqueológicas.
+                    </p>
+
+                    <nav class="home-menu">
+
+                        <button
+                            type="button"
+                            class="btn btn-menu"
+                            onclick="showScreen('processamento')"
+                        >
+                            <span>Processar Planilha</span>
+                            <span aria-hidden="true">→</span>
+                        </button>
+
+                    </nav>
+
+                </section>
+
+                <div class="home-right">
+
+                                   <img
+                    src="./cavidades.jpeg"
+                    alt="Caverna"
+                >
+
+                </div>
+
+            </div>
+
+            <footer class="home-footer">
+
+               
+            <img
+                src="./vale.png"
+                class="header-logo"
+                alt="Vale"
+            >
+
+                <div class="footer-powered">
+
+                    <span>Powered by</span>
+
+                    
+            <img
+                src="./arcadis.svg"
+                class="footer-logo-arcadis"
+                alt="Vale"
+            >
+
+                </div>
+
+            </footer>
+
+        </main>
+
+    </div>
+<div id="processamento" class="screen">
+
+ <header class="top-bar">
+
+    <img src="vale-white.png" class="header-logo">
+
+    <div class="header-title">
+        Classificador de Relevância de Cavidades
+    </div>
+
+    <img src="arcadis-white.png" class="header-logo">
+
+</header>
+
+
+    <main class="processing-card">
+
+        <div class="processing-header">
+
+            <div>
+                
+    <div class="tabs">
+        <button class="btn btn-success"
+                onclick="showScreen('home')">
+            Início
+        </button>
+
+    </div>
+
+                <h2 class="section-title">
+                    Processamento em Lote
+                </h2>
+
+                <p class="section-subtitle">
+                    Baixe o modelo, preencha os dados das cavidades e envie a planilha para processamento.
+                </p>
+
+            </div>
+
+            <div class="template-area">
+
+                <button class="btn btn-success">
+
+                    ⬇ Baixar Template Excel
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="processing-body">
+
+            <div class="dropzone">
+
+                <div class="dropzone-content">
+
+                    <div class="dropzone-icon">
+                        📄
+                    </div>
+
+                    <h3 class="dropzone-title">
+                        Arraste a planilha para esta área
+                    </h3>
+
+                    <p class="dropzone-subtitle">
+                        ou selecione um arquivo XLSX
+                    </p>
+
+                    <input
+                        type="file"
+                        id="fileInput"
+                        accept=".xlsx"
+                        hidden
+                    >
+
+                    <button
+                        class="btn-file"
+                        onclick="document.getElementById('fileInput').click()"
+                    >
+                        Selecionar arquivo
+                    </button>
+                                <div
+                id="arquivoSelecionado"
+                class="file-card"
+                style="display:none"
+            >
+
+                <div class="file-info">
+
+                    <div class="file-icon">
+                        📄
+                    </div>
+
+                    <div>
+
+                        <div class="file-name">
+
+                            template_cavidades.xlsx
+
+                        </div>
+
+                        <div class="file-meta">
+
+                            24 KB • XLSX • Pronto para processar
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="file-remove">
+                    ✕
+                </button>
+
+            </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="actions">
+
+                <button class="btn btn-action">
+
+                    ▶ Processar Planilha
+
+                </button>
+
+                <small>
+
+                    Os resultados serão disponibilizados em uma nova planilha.
+
+                </small>
+
+            </div>
+            
+
+        </div>
+
+    </main>
+
+</div>
+</body>
+
+</html>
