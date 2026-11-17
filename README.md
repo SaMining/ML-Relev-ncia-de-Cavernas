@@ -28,7 +28,7 @@
 
 ## 🧭 Contexto
 
-A classificação de relevância das cavidades (baixa, média, alta ou máxima) segue a legislação vigente e depende de estudos espeleológicos que podem exigir **no mínimo 18 meses** de estudo. Cavidades de relevância máxima impõem restrições importantes ao planejamento e à viabilidade dos empreendimentos minerários.
+A relevância das cavidades (baixa, média, alta ou máxima) segue a legislação vigente e depende de atributos geológicos, biológicos, hidrológicos, arqueológicos, paleontológicos e histórico-culturais. Cavidades de relevância máxima restringem o planejamento e a viabilidade de empreendimentos minerários, e a classificação final pode levar pelo menos 18 meses de estudos, período em que a equipe de engenharia planeja com incerteza.
 
 Para a equipe técnica de espeleologia, fazer uma avaliação preliminar manual, cavidade por cavidade, é trabalhoso e envolve muitas variáveis ao mesmo tempo.
 
