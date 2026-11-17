@@ -117,13 +117,20 @@ As 48 variáveis da prospecção mais quatro medições topográficas:
 
 ## 🖥️ Interface
 
+
 | Tela inicial | Estimar relevância |
 |---|---|
 | ![Tela inicial](images/tela_inicial.png) | ![Estimar relevância](images/estimar_relevancia.png) |
 
-**Manual de instruções:** fluxo de uso, dicionário de dados e explicação dos modelos.
-
+<strong class="___1qwroh2 fl43uef f19n0e5" data-lexical-text="true">**Entrada e saída de dados:**</strong> exemplo do arquivo de entrada e do resultado gerado pela solução.
+<br><br>
+![Entrada e saída de dados](images/fluxo_entrada_saida.png)
+<br><br>
+<strong class="___1qwroh2 fl43uef f19n0e5" data-lexical-text="true">**Manual de instruções:**</strong> fluxo de uso, dicionário de dados e explicação dos modelos.
+<br><br>
 ![Manual de instruções](images/manual_instrucoes.png)
+<br><br>
+<strong class="___1qwroh2 fl43uef f19n0e5" data-lexical-text="true">---</strong>
 
 ---
 
@@ -178,8 +185,9 @@ Desenvolvido pela equipe de **Inovação Digital da Arcadis**, em parceria com a
 
 | Nome | |
 |---|---|
-| _[preencher]_ | _[preencher]_ |
-| _[preencher]_ | _[preencher]_ |
+| _[Karina]_ | _[preencher]_ |
+| _[Gabriel]_ | _[preencher]_ |
+| _[Dany]_ | _[preencher]_ |
 
 ---
 
