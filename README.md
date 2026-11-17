@@ -15,13 +15,14 @@
 
 - [Contexto](#-contexto)
 - [O que a solução faz](#-o-que-a-solução-faz)
-- [Modelos](#-modelos)
 - [Dados utilizados](#-dados-utilizados)
+- [Modelos](#-modelos)
 - [Arquitetura](#-arquitetura)
 - [Interface](#-interface)
 - [Estrutura do repositório](#-estrutura-do-repositório)
 - [Como executar](#-como-executar)
 - [Limitações e uso responsável](#-limitações-e-uso-responsável)
+- [Mais informações](#-mais-informações)
 - [Equipe](#-equipe)
 
 ---
@@ -145,7 +146,6 @@ A escolha do algoritmo (Random Forest) e dos thresholds foi desenvolvida em conj
 <br><br>
 <strong class="___1qwroh2 fl43uef f19n0e5" data-lexical-text="true">---</strong>
 
----
 
 ## 📁 Estrutura do repositório
 
