@@ -28,63 +28,41 @@
 
 ## 🧭 Contexto
 
-A relevância das cavidades (baixa, média, alta ou máxima) segue a legislação vigente e depende de atributos geológicos, biológicos, hidrológicos, arqueológicos, paleontológicos e histórico-culturais. Cavidades de relevância máxima restringem o planejamento e a viabilidade de empreendimentos minerários, e a classificação final pode levar pelo menos 18 meses de estudos, período em que a equipe de engenharia planeja com incerteza.
+A relevância das cavidades (baixa, média, alta ou máxima) segue a IN MMA nº 2/2017 e o Decreto nº 99.556/1990, e depende de atributos geológicos, biológicos, hidrológicos, arqueológicos, paleontológicos e histórico-culturais. Cavidades de relevância máxima podem restringir a viabilidade de empreendimentos minerários, e a classificação final pode exigir ao menos 18 meses de estudos, período em que o planejamento ocorre sob incerteza.
+<br><br>
+Para especialistas em espeleologia, a avaliação preliminar manual, cavidade por cavidade, é trabalhosa e envolve muitas variáveis simultâneas.
 
-Para a equipe técnica de espeleologia, fazer uma avaliação preliminar manual, cavidade por cavidade, é trabalhoso e envolve muitas variáveis ao mesmo tempo.
+**Objetivo:** Criar um modelo preditivo capaz de estimar uma **pré-classificação de relevância** usando apenas dados iniciais de prospecção e espeleotopografia, para:
 
-**Objetivo:** criar um modelo preditivo capaz de estimar uma **pré-classificação de relevância** usando apenas dados iniciais de prospecção e espeleotopografia, para:
-
-- direcionar melhor os esforços de campo;
-- apoiar o planejamento dos estudos posteriores;
-- otimizar tempo e recursos dos projetos.
+- Direcionar melhor os esforços de campo;
+- Apoiar o planejamento dos estudos posteriores;
+- Otimizar tempo e recursos dos projetos.
 
 ---
 
 ## ⚙️ O que a solução faz
-Por meio de modelos preditivos, a solução usa dados das etapas iniciais dos estudos (prospecção e espeleotopografia) para estimar previamente a probabilidade de uma cavidade ser classificada como de relevância máxima.
 
-1. O usuário escolhe o modelo e o threshold.
-2. Baixa o template Excel correspondente ao modelo.
-3. Preenche a planilha seguindo o dicionário de dados.
-4. Envia o arquivo e o estimador processa **todas as cavidades em lote**.
-5. O resultado é entregue em uma nova planilha, com a probabilidade estimada e a classificação de cada cavidade.
+Por meio de modelos preditivos, a solução usa dados das etapas iniciais dos estudos (prospecção e espeleotopografia) para estimar previamente a probabilidade de uma cavidade ser classificada como de relevância máxima. A estimativa apoia o planejamento e não substitui a classificação oficial. Para isso, segue-se as etapas:
+
+1. Escolha o modelo (dados de prospecçãao e/ou topografia) e o corte (threshold de 30% ou 35%).
+2. Baixe o template Excel correspondente ao modelo.
+3. Preencha a planilha seguindo o dicionário de dados.
+4. Envie o arquivo: o estimador processa **todas as cavidades em lote**.
+5. Receba uma nova planilha ou PDF com a probabilidade estimada e a classificação de cada cavidade.
 
 Nos testes dos quatro modelos, o processamento levou cerca de **10 a 20 segundos**.
 
 ---
-
-## 🤖 Modelos
-
-Os quatro modelos usam **Random Forest** e estão publicados no SAS Model Manager.
-
-| Modelo | Dados de entrada | Variáveis | Thresholds disponíveis |
-|---|---|---|---|
-| `prosp` | Prospecção | 48 | 30% e 35% |
-| `prosp_topo` | Prospecção + topografia | 52 | 30% e 35% |
-
-**Threshold:** é o corte de probabilidade a partir do qual a cavidade é classificada como de relevância máxima. Quanto menor o threshold, mais cavidades máximas o modelo capta, mas também aumentam os falsos positivos e o volume de cavidades encaminhadas para avaliação.
-
----
-
 ## 🗂️ Dados utilizados
 
 Os modelos foram treinados com dados históricos do **Espeleo Vale**. A base original tinha **7.158 registros e 257 colunas**, que passaram por tratamento, filtros e seleção de variáveis. A seleção combinou critérios estatísticos com a validação da equipe de espeleologia.
 
 ### Prospecção (48 variáveis)
-Dados registrados por observação na primeira ida a campo:
 
-| Grupo | Exemplo |
-|---|---|
-| Fauna | presença de animais e vestígios |
-| Espeleotemas | formações minerais |
-| Hidrologia | água, lagos e drenagens |
-| Litotipo | tipo de rocha |
-| Dificuldades e feições internas | ex.: blocos instáveis |
-| Arqueologia e paleontologia | vestígios culturais e fósseis |
-| Ambiente, guano e tipo de cavidade | contexto da cavidade |
-| Dimensões aproximadas | estimativas de prospecção |
+Dados registrados por observação na primeira ida a campo.
 
 ### Prospecção + Topografia (52 variáveis)
+
 As 48 variáveis da prospecção mais quatro medições topográficas:
 
 - Projeção horizontal
@@ -92,7 +70,41 @@ As 48 variáveis da prospecção mais quatro medições topográficas:
 - Área
 - Volume
 
-> O dicionário completo de dados, com tipos, valores aceitos e correspondência com o Espeleo Vale, está disponível no **Manual de instruções** da interface.
+### Dicionário de dados
+
+O template tem **50 colunas** para os modelos de prospecção (2 de identificação + 48 variáveis) e **54 colunas** para os modelos com topografia (+ 4 variáveis topográficas). Os cabeçalhos devem ser mantidos **exatamente** como no template, inclusive os truncados.
+
+| Grupo | Variáveis | Tipo | Valores |
+|---|---|---|---|
+| Identificação (`ID`, `nome_entrada`) | 2 | Texto / inteiro | Código único (ex.: SRA_0002) / nº da entrada |
+| Dimensões (prospecção) | 2 | Decimal | Metros |
+| Ambiente | 2 | Binário | 0 = não · 1 = sim |
+| Fauna observada | 8 | Binário | 0 = não · 1 = sim |
+| Espeleotemas | 7 | Binário | 0 = não · 1 = sim |
+| Hidrologia | 6 | Binário | 0 = não · 1 = sim |
+| Dificuldades internas | 5 | Binário | 0 = não · 1 = sim |
+| Feições internas | 4 | Binário | 0 = não · 1 = sim |
+| Arqueologia e paleontologia | 4 | Binário | 0 = não · 1 = sim |
+| Litotipo | 5 | Binário | 0 = não · 1 = sim |
+| Guano | 2 | Binário | 0 = não · 1 = sim |
+| Tipo de cavidade | 3 | Binário | 0 = não · 1 = sim |
+| Dimensões (topografia) | 4 | Decimal | Projeção horizontal, desnível, área, volume |
+
+> > O dicionário completo (descrição de cada coluna, tipos, valores aceitos e regras de preenchimento) está em [`docs/dicionário_dados.xlsx`](docs/dicionario_dados.xlsx) e também na aba **Manual de instruções** da interface.
+
+---
+
+## 🤖 Modelos
+
+Com base nesses dados, foram desenvolvidos quatro modelos **Random Forest** (dois conjuntos de variáveis, cada um com dois thresholds), publicados no SAS Model Manager.
+
+| Modelo | Dados de entrada | Variáveis | Thresholds disponíveis |
+|---|---|---|---|
+| `prosp` | Prospecção | 48 | 30% e 35% |
+| `prosp_topo` | Prospecção + topografia | 52 | 30% e 35% |
+
+**Threshold:** é o corte de probabilidade a partir do qual a cavidade é classificada como de relevância máxima. Quanto menor o threshold, mais cavidades máximas o modelo capta, mas também aumentam os falsos positivos e o volume de cavidades encaminhadas para avaliação.
+A escolha do algoritmo (Random Forest) e dos thresholds foi desenvolvida em conjunto com os especialistas em espeleologia.
 
 ---
 
@@ -177,18 +189,31 @@ uv run jupyter lab
 - O estimador é uma **ferramenta de apoio à decisão**. Ele **não substitui** os estudos técnicos nem a classificação oficial de relevância prevista na legislação.
 - Os resultados se referem às bases de validação analisadas. O desempenho deve ser acompanhado ao aplicar o modelo em novas localidades.
 - O resultado depende da qualidade do preenchimento do template. Siga o dicionário de dados, mantenha os nomes exatos das colunas e não preencha a coluna `target`.
+---
+
+## 📚 Mais informações
+
+A documentação final da solução reúne o contexto, os dados, a modelagem, a arquitetura e o guia técnico de operação e manutenção:
+
+📄 [Documentação final – Estimador de Relevância Prévia](docs/documentacao_estimador_relevancia_previa.docx)
+
+| Parte | Conteúdo |
+|---|---|
+| **I – Visão geral** | Contexto e problema, dados e preparação da base, modelagem e resultados, arquitetura e uso da solução |
+| **II – Guia técnico** | Inventário de componentes, acessos, retreinamento, publicação no SAS Viya, manutenção da interface e problemas conhecidos |
+| **III – Governança** | Limitações, recomendações, contatos e histórico do projeto |
 
 ---
 
 ## 👥 Equipe
 
-Desenvolvido pela equipe de **Inovação Digital da Arcadis**, em parceria com a equipe de Espeleologia, para o **Banco de Dados Ambientais (BDA) da Vale**.
+Desenvolvido pela equipe de **Inovação Digital da Arcadis**, em parceria com a equipe de Espeleologia da Vale.
 
 | Contato | |
 |---|---|
-| _[@Karina Silva](mailto:karina.santos@arcadis.com)_ |
-| _[@Gabriel So](mailto:GABRIEL.SO@arcadis.com)_ |
-| _[@Danielle Blazys](mailto:danielle.blazys@arcadis.com)_ |
+[@Karina Silva](mailto:karina.santos@arcadis.com)
+[@Gabriel So](mailto:GABRIEL.SO@arcadis.com)
+[@Danielle Blazys](mailto:danielle.blazys@arcadis.com)
 
 ---
 
