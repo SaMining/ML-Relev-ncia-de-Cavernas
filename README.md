@@ -13,17 +13,17 @@
 
 ## 📌 Sumário
 
-- [Contexto](#-contexto)
-- [O que a solução faz](#-o-que-a-solução-faz)
-- [Dados utilizados](#-dados-utilizados)
-- [Modelos](#-modelos)
-- [Arquitetura](#-arquitetura)
-- [Interface](#-interface)
-- [Estrutura do repositório](#-estrutura-do-repositório)
-- [Como executar](#-como-executar)
-- [Limitações e uso responsável](#-limitações-e-uso-responsável)
-- [Mais informações](#-mais-informações)
-- [Equipe](#-equipe)
+- [Contexto](#contexto)
+- [O que a solução faz](#o-que-a-solucao-faz)
+- [Dados utilizados](#dados-utilizados)
+- [Modelos](#modelos)
+- [Arquitetura](#arquitetura)
+- [Interface](#interface)
+- [Estrutura do repositório](#estrutura-do-repositorio)
+- [Como executar](#como-executar)
+- [Limitações e uso responsável](#limitacoes-e-uso-responsavel)
+- [Mais informações](#mais-informacoes)
+- [Equipe](#equipe)
 
 ---
 
