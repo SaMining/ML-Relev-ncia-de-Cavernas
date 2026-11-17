@@ -41,6 +41,7 @@ Para a equipe técnica de espeleologia, fazer uma avaliação preliminar manual,
 ---
 
 ## ⚙️ O que a solução faz
+Por meio de modelos preditivos, a solução usa dados das etapas iniciais dos estudos (prospecção e espeleotopografia) para estimar previamente a probabilidade de uma cavidade ser classificada como de relevância máxima.
 
 1. O usuário escolhe o modelo e o threshold.
 2. Baixa o template Excel correspondente ao modelo.
@@ -48,7 +49,7 @@ Para a equipe técnica de espeleologia, fazer uma avaliação preliminar manual,
 4. Envia o arquivo e o estimador processa **todas as cavidades em lote**.
 5. O resultado é entregue em uma nova planilha, com a probabilidade estimada e a classificação de cada cavidade.
 
-Nos testes dos quatro modelos, o processamento levou cerca de **11 a 15 segundos**.
+Nos testes dos quatro modelos, o processamento levou cerca de **10 a 20 segundos**.
 
 ---
 
