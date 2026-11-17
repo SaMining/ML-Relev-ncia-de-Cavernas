@@ -28,7 +28,7 @@
 
 ## 🧭 Contexto
 
-A classificação de relevância de cavidades é uma etapa complexa dos estudos espeleológicos. Ela considera atributos físicos, biológicos e socioculturais e pode exigir **no mínimo 18 meses** de estudo, incluindo levantamentos biológicos em diferentes campanhas.
+A classificação de relevância das cavidades (baixa, média, alta ou máxima) segue a legislação vigente e depende de estudos espeleológicos que podem exigir **no mínimo 18 meses** de estudo. Cavidades de relevância máxima impõem restrições importantes ao planejamento e à viabilidade dos empreendimentos minerários.
 
 Para a equipe técnica de espeleologia, fazer uma avaliação preliminar manual, cavidade por cavidade, é trabalhoso e envolve muitas variáveis ao mesmo tempo.
 
