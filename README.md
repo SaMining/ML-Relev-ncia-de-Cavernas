@@ -183,11 +183,11 @@ uv run jupyter lab
 
 Desenvolvido pela equipe de **Inovação Digital da Arcadis**, em parceria com a equipe de Espeleologia, para o **Banco de Dados Ambientais (BDA) da Vale**.
 
-| Nome | |
+| Contato | |
 |---|---|
-| _[Karina]_ | _[preencher]_ |
-| _[Gabriel]_ | _[preencher]_ |
-| _[Dany]_ | _[preencher]_ |
+| _[@Karina Silva](mailto:karina.santos@arcadis.com)_ |
+| _[@Gabriel So](mailto:GABRIEL.SO@arcadis.com)_ |
+| _[@Danielle Blazys](mailto:danielle.blazys@arcadis.com)_ |
 
 ---
 
