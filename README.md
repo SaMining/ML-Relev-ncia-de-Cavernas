@@ -209,11 +209,10 @@ A documentação final da solução reúne o contexto, os dados, a modelagem, a 
 
 Desenvolvido pela equipe de **Inovação Digital da Arcadis**, em parceria com a equipe de Espeleologia da Vale.
 
-| Contato | |
-|---|---|
-[@Karina Silva](mailto:karina.santos@arcadis.com)
-[@Gabriel So](mailto:GABRIEL.SO@arcadis.com)
-[@Danielle Blazys](mailto:danielle.blazys@arcadis.com)
+### Contato
+- [@Karina Silva](mailto:karina.santos@arcadis.com)
+- [@Gabriel So](mailto:GABRIEL.SO@arcadis.com)
+- [@Danielle Blazys](mailto:danielle.blazys@arcadis.com)
 
 ---
 
